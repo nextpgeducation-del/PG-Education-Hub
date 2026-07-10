@@ -1,0 +1,97 @@
+Update the PG Education website with the following changes.
+
+1. Faculty Section
+- Remove all extra teachers.
+- Keep ONLY two teachers.
+
+Teacher 1
+Name: Mr. Priyanshu
+Subject: Mathematics
+
+Teacher 2
+Name: Mr. Ravi Yadav
+Subject: Science
+
+Remove every other faculty card, profile, and reference from the website.
+
+---------------------------------------------------
+
+2. Animated Student Counter
+
+Remove the fixed value:
+500+ Students
+
+Instead, connect the counter with the registered students database.
+
+The "Students Enrolled" counter must display the TOTAL number of registered students stored in Firebase Firestore.
+
+Example:
+
+If 1 student registers → show 1
+
+If 15 students register → show 15
+
+If 128 students register → show 128
+
+If 1,245 students register → show 1245
+
+The counter should automatically update in real time whenever a new student registers or a student is deleted/restored.
+
+Do not use any hardcoded values.
+
+---------------------------------------------------
+
+3. Dashboard Statistics
+
+Show live statistics using Firebase.
+
+Display:
+
+• Total Registered Students
+• Active Students
+• Terminated Students
+• Restored Students
+• Total Notes
+• Total Previous Year Papers
+• Total Mock Tests
+
+Update all statistics automatically in real time.
+
+---------------------------------------------------
+
+4. Homepage Statistics
+
+Replace all fake values with live database values.
+
+Current:
+
+Students Enrolled: 500+
+Teachers: 24
+Courses: 7+
+Success Rate: 98%
+
+Change to:
+
+Students Enrolled → Total Registered Students (Live)
+
+Teachers → 2
+
+Courses → 7
+
+Success Rate → Calculate dynamically using completed mock tests and passing students. If dynamic calculation is not available yet, temporarily display 98%.
+
+---------------------------------------------------
+
+5. Admin Dashboard
+
+Display live cards:
+
+Total Registered Students
+Active Students
+Terminated Students
+Deleted Students
+Today's New Registrations
+
+All values must come directly from Firebase Firestore.
+
+No hardcoded numbers should remain anywhere on the website.
