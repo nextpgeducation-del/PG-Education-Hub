@@ -1,0 +1,300 @@
+# PART – 8 : Student Termination, Deleted Students, Reports, Notifications & Backup System
+
+## Student Termination System
+
+Create a professional **Student Termination Management System**.
+
+The Admin should never permanently delete a student immediately.
+
+Instead, students should first be moved to a **Terminated Students** section.
+
+---
+
+# Terminate Student Button
+
+Every student row inside **Registered Students** must contain:
+
+🚫 **Terminate Student**
+
+When clicked:
+
+Show confirmation popup.
+
+Popup Message:
+
+> Are you sure you want to terminate this student?
+>
+> This student account will become inactive immediately.
+>
+> The student's data will remain safely stored for **60 days**.
+>
+> During these 60 days, the Admin can restore the account at any time.
+>
+> After 60 days, the account should be permanently deleted automatically.
+
+Buttons
+
+* Cancel
+* Confirm Termination
+
+---
+
+# After Confirmation
+
+Immediately perform these actions:
+
+* Change Student Status to **Terminated**
+* Disable Student Login
+* Remove student from Active Students list
+* Move the student to **Terminated Students**
+* Save Termination Date
+* Start a 60-day countdown
+* Keep all student records (profile, fees, notes, results, attendance if added later)
+
+Do **not** permanently delete the student at this stage.
+
+---
+
+# Terminated Students Page
+
+Create a dedicated page inside Admin Dashboard.
+
+Display:
+
+* Student ID
+* Admission Number
+* Student Name
+* Father's Name
+* Mobile Number
+* School Name
+* Class
+* Admission Date
+* Registration Date
+* Termination Date
+* Days Remaining
+* Termination Reason
+* Current Status
+
+---
+
+# Countdown Timer
+
+Display remaining days.
+
+Example:
+
+59 Days Remaining
+
+45 Days Remaining
+
+10 Days Remaining
+
+1 Day Remaining
+
+0 Days Remaining
+
+Countdown should calculate automatically from the Termination Date.
+
+---
+
+# Restore Student
+
+Provide a **Restore Student** button.
+
+When clicked:
+
+* Move student back to Registered Students
+* Enable Student Login
+* Restore previous status
+* Restore all fee records
+* Restore dashboard data
+* Restore notes access
+* Restore mock test history
+
+Nothing should be lost.
+
+---
+
+# Permanent Delete
+
+Provide a **Permanently Delete** button.
+
+Show confirmation popup.
+
+Message:
+
+> This action cannot be undone.
+>
+> Do you want to permanently delete this student?
+
+Buttons:
+
+* Cancel
+* Delete Permanently
+
+When confirmed:
+
+Delete:
+
+* Student Profile
+* Authentication Record
+* Fee History
+* Dashboard Data
+* Notifications
+* Activity History
+
+Only after explicit confirmation.
+
+---
+
+# Automatic Deletion
+
+If a student remains in the **Terminated Students** section for 60 days:
+
+Automatically:
+
+* Permanently delete the student record
+* Delete authentication account
+* Remove related files from storage (if applicable)
+* Remove student from search results
+
+This process should run automatically (scheduled cleanup/background function).
+
+---
+
+# Termination Reasons
+
+Admin can select or enter a reason:
+
+* Course Completed
+* Left Coaching
+* Long Absence
+* Fee Issues
+* Shifted to Another City
+* Personal Reason
+* Other (Custom)
+
+Store the reason in Firestore.
+
+---
+
+# Reports
+
+Create a complete Reports module.
+
+Generate reports for:
+
+* Total Admissions
+* New Admissions
+* Active Students
+* Terminated Students
+* Restored Students
+* Total Fees Collected
+* Pending Fees
+* Monthly Collection
+* Class-wise Reports
+* Mock Test Results
+
+Export:
+
+* PDF
+* Excel
+
+---
+
+# Notifications
+
+Admin should be able to send notifications to:
+
+* All Students
+* Selected Students
+* Class-wise Students
+
+Examples:
+
+* New Batch Starting
+* Holiday Notice
+* Fee Reminder
+* Mock Test Schedule
+* New Notes Uploaded
+* Previous Year Papers Uploaded
+
+Students should see these notifications in their dashboard.
+
+---
+
+# Announcement System
+
+Create an announcement management section.
+
+Admin can:
+
+* Add Announcement
+* Edit Announcement
+* Delete Announcement
+* Pin Important Notices
+* Schedule Announcement
+
+Display announcements on:
+
+* Home Page
+* Student Dashboard
+
+---
+
+# Backup & Restore
+
+Create a Backup section.
+
+Admin should be able to:
+
+* Export student database
+* Export fee records
+* Export reports
+* Export notes metadata
+
+Formats:
+
+* JSON
+* CSV
+* Excel
+
+Provide an import option to restore backups.
+
+---
+
+# Activity Log
+
+Maintain an audit log for all important admin actions.
+
+Log:
+
+* Login
+* Password Change
+* Student Added
+* Student Updated
+* Student Terminated
+* Student Restored
+* Student Permanently Deleted
+* Fee Updated
+* Notes Uploaded
+* Papers Uploaded
+
+For each action store:
+
+* Date
+* Time
+* Admin Username
+* Action
+* Student ID (if applicable)
+
+---
+
+# Security
+
+* Only Admin can terminate, restore or permanently delete students.
+* Students cannot access the Terminated Students module.
+* Protect all operations using Firebase Authentication, Firestore Security Rules and role-based access control.
+* Keep deleted records secure until the 60-day retention period expires.
+
+Generate this module as production-ready, responsive and fully integrated with the Admin Dashboard, Student Dashboard and Firebase backend.

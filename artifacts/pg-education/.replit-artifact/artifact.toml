@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "PG Education"
+version = "1.0.0"
+id = "artifacts/pg-education"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18795
+
+[services.development]
+run = "pnpm --filter @workspace/pg-education run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pg-education", "run", "build" ]
+publicDir = "artifacts/pg-education/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18795"
+BASE_PATH = "/"

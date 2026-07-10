@@ -1,0 +1,307 @@
+# PART – 7 : Student Fee Management System (Admin & Student)
+
+## Student Fee Management System
+
+Create a complete **Fee Management System** integrated with Firebase Firestore.
+
+The system must automatically create a fee record for every new student.
+
+---
+
+# Automatic Fee Dashboard
+
+Immediately after a student registers or is added by the Admin:
+
+Automatically create a **12-month fee schedule** starting from the student's **Admission Month**.
+
+### Example
+
+If Admission Date is:
+
+**July 2026**
+
+Automatically generate:
+
+* July 2026
+* August 2026
+* September 2026
+* October 2026
+* November 2026
+* December 2026
+* January 2027
+* February 2027
+* March 2027
+* April 2027
+* May 2027
+* June 2027
+
+No manual month creation should be required.
+
+---
+
+# Monthly Fee Structure
+
+For every month store:
+
+* Month Name
+* Year
+* Monthly Fee Amount
+* Discount (Optional)
+* Late Fee (Optional)
+* Amount Paid
+* Remaining Balance
+* Payment Status
+* Payment Date
+* Receipt Number
+* Payment Mode
+* Remarks
+
+---
+
+# Payment Status
+
+Available Status:
+
+🟢 Paid
+
+🟡 Partially Paid
+
+🔴 Pending
+
+Status should automatically update based on payment amount.
+
+---
+
+# Admin Fee Dashboard
+
+Inside every student's profile include a dedicated **Fee Dashboard**.
+
+Display:
+
+* Student Name
+* Student ID
+* Class
+* Admission Date
+* Monthly Fee
+* Total Fee
+* Total Paid
+* Total Pending
+* Total Discount
+* Total Late Fee
+
+---
+
+# Monthly Fee Table
+
+Display all 12 months.
+
+Each row should contain:
+
+* Month
+* Fee Amount
+* Discount
+* Late Fee
+* Amount Paid
+* Remaining Balance
+* Status
+* Payment Date
+* Receipt Number
+* Remarks
+
+---
+
+# Admin Fee Actions
+
+The Admin should be able to:
+
+* Set Monthly Fee
+* Change Monthly Fee
+* Apply Discount
+* Apply Late Fee
+* Mark as Paid
+* Mark as Partially Paid
+* Mark as Pending
+* Enter Amount Paid
+* Add Payment Date
+* Select Payment Mode
+* Add Remarks
+* Edit Payment
+* Delete Payment Record
+* Print Receipt
+* Download Receipt PDF
+
+---
+
+# Payment Modes
+
+Provide the following options:
+
+* Cash
+* UPI
+* Bank Transfer
+* Debit Card
+* Credit Card
+* Other
+
+---
+
+# Fee Receipt
+
+Generate a professional PDF receipt.
+
+Receipt should contain:
+
+* PG Education Logo
+* Institute Name
+* Receipt Number
+* Student Name
+* Student ID
+* Father's Name
+* Class
+* Admission Number
+* Month Paid
+* Fee Amount
+* Discount
+* Late Fee
+* Final Amount Paid
+* Payment Date
+* Payment Mode
+* Admin Signature Placeholder
+* Student Signature Placeholder
+
+Allow:
+
+* Print Receipt
+* Download Receipt (PDF)
+
+---
+
+# Student Dashboard Fee Section
+
+Students should only be able to **view** their fee details.
+
+Display:
+
+* Monthly Fee Status
+* Total Fee
+* Total Paid
+* Total Pending
+* Payment History
+* Receipt Download Button
+
+Students **must not** be able to:
+
+* Edit Fees
+* Change Payment Status
+* Delete Records
+
+---
+
+# Fee Summary Cards
+
+Show summary cards in both Admin and Student Dashboards:
+
+* Total Fees
+* Total Paid
+* Total Pending
+* This Month Paid
+* This Month Pending
+
+---
+
+# Fee Search
+
+Allow Admin to search by:
+
+* Student Name
+* Student ID
+* Mobile Number
+* Father's Name
+
+---
+
+# Fee Filters
+
+Provide filters:
+
+* Paid
+* Partially Paid
+* Pending
+* Class
+* Month
+* Year
+
+---
+
+# Automatic Notifications
+
+Whenever the Admin updates a fee:
+
+Automatically notify the student.
+
+Examples:
+
+* Fee Received Successfully
+* Partial Fee Received
+* Fee Pending Reminder
+* Receipt Generated
+
+Notifications should appear in the Student Dashboard.
+
+---
+
+# Dashboard Analytics
+
+Create charts showing:
+
+* Monthly Fee Collection
+* Pending Fees
+* Paid Fees
+* Class-wise Collection
+* Yearly Collection
+
+Use Chart.js.
+
+---
+
+# Fee Reports
+
+Allow Admin to generate:
+
+* Monthly Report
+* Yearly Report
+* Student-wise Report
+* Class-wise Report
+* Pending Fee Report
+* Paid Fee Report
+
+Download formats:
+
+* PDF
+* Excel
+
+---
+
+# Security Rules
+
+* Only Admin can modify fee records.
+* Students can only view their own fee information.
+* Every fee transaction must be saved permanently in Firestore.
+* Refreshing or logging out must not remove payment history.
+* Maintain an audit log of all fee updates (date, time, admin, action).
+
+---
+
+# Performance Requirements
+
+The fee management system must be:
+
+* Real-time
+* Responsive
+* Secure
+* Fast Loading
+* Mobile Friendly
+* Production Ready
+* Fully Integrated with Firebase Firestore
+* Compatible with the Student Dashboard and Admin Dashboard
+* Designed using reusable components and modern UI/UX principles.

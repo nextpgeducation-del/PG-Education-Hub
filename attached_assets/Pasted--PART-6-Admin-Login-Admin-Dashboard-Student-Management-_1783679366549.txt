@@ -1,0 +1,305 @@
+# PART – 6 : Admin Login, Admin Dashboard & Student Management
+
+## Admin Authentication
+
+Create a completely secure Admin Login System.
+
+Only administrators should be able to access the Admin Dashboard.
+
+Use Firebase Authentication, Firestore Database, secure sessions and role-based access control.
+
+---
+
+# Default Admin Account
+
+Create one default administrator account.
+
+**Username:**
+UltimateAdmin
+
+**Default Password:**
+Ultimate@2006
+
+---
+
+# First Login Security
+
+When the Admin logs in for the first time:
+
+* Force the Admin to change the default password.
+* The default password must become invalid after it has been changed.
+* Passwords must always be stored securely using hashing/authentication best practices.
+
+---
+
+# Admin Login Page
+
+Create a premium Admin Login page.
+
+Fields:
+
+* Username
+* Password
+
+Features:
+
+* Show Password
+* Forgot Password
+* Remember Me
+* Secure Login
+* Login Animation
+* Loading Spinner
+* Error Handling
+
+---
+
+# Admin Dashboard
+
+After successful login, open a premium Admin Dashboard.
+
+Display:
+
+* Welcome Admin
+* Admin Name
+* Today's Date & Time
+* Last Login
+* Total Students
+* Active Students
+* Terminated Students
+* Total Fees Collected
+* Pending Fees
+* Monthly Collection
+* Notifications
+
+Use charts (Chart.js) for analytics.
+
+---
+
+# Dashboard Sidebar
+
+Create the following menu:
+
+* Dashboard
+* Registered Students
+* Add New Student
+* Student Fee Management
+* Notes Management
+* Previous Year Papers
+* Mock Test Management
+* Gallery Management
+* Announcements
+* Reports
+* Settings
+* Terminated Students
+* Admin Profile
+* Logout
+
+---
+
+# Registered Students
+
+Whenever a student completes registration successfully:
+
+The student must automatically appear inside the **Registered Students** list without requiring manual entry.
+
+Use Firebase Firestore real-time updates.
+
+---
+
+# Registered Student List
+
+Display the following columns:
+
+* Student ID
+* Admission Number
+* Student Name
+* Father's Name
+* Mobile Number
+* Email (Display **Not Provided** if empty)
+* PIN Code
+* School Name
+* Class
+* Admission Date
+* Registration Date
+* Account Status
+
+---
+
+# Search & Filters
+
+Allow Admin to search using:
+
+* Student Name
+* Student ID
+* Mobile Number
+* Father's Name
+
+Filters:
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Active Students
+* Terminated Students
+
+Sorting:
+
+* Latest Registration
+* Oldest Registration
+* Name A–Z
+* Name Z–A
+
+---
+
+# Student Profile
+
+Clicking a student should open a premium profile page/modal.
+
+Display:
+
+* Student ID
+* Admission Number
+* Full Name
+* Father's Name
+* Mobile Number
+* Email
+* PIN Code
+* School Name
+* Class
+* Admission Date
+* Registration Date
+* Profile Picture
+* Fee Summary
+* Mock Test Summary
+* Notes Downloads
+
+---
+
+# Add New Student
+
+Admin should also be able to manually add a student.
+
+Required Fields:
+
+* Student Name
+* Father's Name
+* Mobile Number
+* PIN Code
+* School Name
+* Class
+* Email (Optional)
+* Admission Date
+* Password
+
+Automatically generate:
+
+* Student ID
+* Admission Number
+* Fee Dashboard
+* Student Dashboard
+
+---
+
+# Edit Student
+
+Admin should be able to edit:
+
+* Name
+* Father's Name
+* Mobile Number
+* Email
+* PIN Code
+* School Name
+* Class
+* Admission Date
+* Status
+
+Save updates instantly to Firebase Firestore.
+
+---
+
+# Student Actions
+
+Every student row should have the following action buttons:
+
+* 👁 View Profile
+* ✏️ Edit Student
+* 💰 Manage Fees
+* 📄 View Fee History
+* 📚 View Notes Activity
+* 📝 View Mock Test Results
+* 🚫 Terminate Student
+
+---
+
+# Student Status
+
+Available Status:
+
+* Active
+* Inactive
+* Suspended
+* Terminated
+
+Status changes should update in real time.
+
+---
+
+# Announcements
+
+Admin should be able to create announcements.
+
+Examples:
+
+* Holiday Notice
+* New Batch
+* New Notes Uploaded
+* Fee Reminder
+* Exam Notice
+
+Announcements should automatically appear in Student Dashboards.
+
+---
+
+# Reports
+
+Generate reports for:
+
+* Total Students
+* New Admissions
+* Active Students
+* Fees Collected
+* Pending Fees
+* Mock Test Performance
+
+Allow reports to be downloaded as PDF and Excel.
+
+---
+
+# Admin Profile
+
+Display:
+
+* Admin Username
+* Profile Photo
+* Last Login
+* Account Status
+
+Allow Admin to:
+
+* Change Password
+* Update Profile Photo
+* Enable Dark Mode
+* Logout Securely
+
+---
+
+# Security Requirements
+
+* Only Admin can access the Admin Dashboard.
+* Students must never access Admin pages.
+* Protect all admin routes using authentication and role-based authorization.
+* Use Firestore security rules.
+* Log important admin actions for auditing (student updates, terminations, fee changes, uploads).
+
+The Admin Dashboard must be responsive, fast, modern, production-ready and integrated with Firebase Firestore for real-time data updates.

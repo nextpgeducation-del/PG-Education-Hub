@@ -1,0 +1,1 @@
+- [connect-pg-simple esbuild bundling](esbuild-bundled-file-deps.md) — packages that read sibling files at runtime (e.g. connect-pg-simple's table.sql) silently fail when esbuild-bundled; must be added to `external` in build.mjs.

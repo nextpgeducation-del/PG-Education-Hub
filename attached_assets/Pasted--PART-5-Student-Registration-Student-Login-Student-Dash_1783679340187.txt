@@ -1,0 +1,398 @@
+# PART – 5 : Student Registration, Student Login & Student Dashboard
+
+## Student Registration System
+
+Create a premium, secure and fully responsive Student Registration page.
+
+The registration form must use Firebase Authentication and Firestore Database.
+
+---
+
+# Registration Form Fields
+
+## Required Fields
+
+* Student Full Name
+* Mobile Number
+* Father's Name
+* PIN Code
+* School Name
+* Class (Dropdown)
+* Password
+* Confirm Password
+
+## Optional Field
+
+* Email Address (Optional)
+
+If the student does not enter an email address, registration must still be successful.
+
+---
+
+# Class Dropdown
+
+Create the following options:
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+
+---
+
+# Automatic Data Generation
+
+After successful registration automatically generate:
+
+* Student ID
+* Admission Number
+* Registration Date
+* Registration Time
+* Admission Date
+* Account Status = Active
+* Fee Dashboard (12 Months)
+* Student Profile
+
+Save everything inside Firebase Firestore.
+
+---
+
+# Registration Validation
+
+Validate:
+
+Student Name
+
+Required
+
+Mobile Number
+
+Exactly 10 digits
+
+PIN Code
+
+Exactly 6 digits
+
+Password
+
+Minimum 8 Characters
+
+Password Rules
+
+* Uppercase Letter
+* Lowercase Letter
+* Number
+* Special Character
+
+Confirm Password
+
+Must Match Password
+
+Email
+
+Validate only if entered.
+
+---
+
+# Registration Success
+
+After successful registration:
+
+Display
+
+Registration Successful
+
+Then automatically:
+
+Save student information.
+
+Create Student Dashboard.
+
+Create Fee Dashboard.
+
+Create Student ID.
+
+Add student into Registered Students inside Admin Dashboard immediately.
+
+No manual approval required.
+
+---
+
+# Student Login
+
+Create a separate Student Login page.
+
+Login Fields
+
+Mobile Number
+
+Password
+
+Login Button
+
+Forgot Password
+
+Remember Me
+
+Show Password
+
+---
+
+# Student Authentication
+
+Students must login using:
+
+Mobile Number
+
+Password
+
+Email should NOT be required.
+
+Only registered students can login.
+
+---
+
+# Student Dashboard
+
+After login open
+
+Student Dashboard.
+
+Dashboard should have a premium design.
+
+---
+
+# Dashboard Sidebar
+
+Include:
+
+Dashboard
+
+My Profile
+
+My Fees
+
+My Courses
+
+Notes
+
+Previous Year Papers
+
+Mock Tests
+
+Results
+
+Notifications
+
+Settings
+
+Logout
+
+---
+
+# Dashboard Home
+
+Display:
+
+Welcome Student
+
+Student Name
+
+Student ID
+
+Class
+
+Admission Date
+
+Profile Picture Placeholder
+
+Current Status
+
+---
+
+# My Profile
+
+Display:
+
+Student Name
+
+Father's Name
+
+Mobile Number
+
+Email (Optional)
+
+PIN Code
+
+School Name
+
+Class
+
+Admission Date
+
+Registration Date
+
+Student ID
+
+Allow student to:
+
+Update Profile Photo only.
+
+Personal information can only be edited by Admin.
+
+---
+
+# My Fees
+
+Display:
+
+Monthly Fee Status
+
+Total Fee
+
+Total Paid
+
+Pending Fee
+
+Admission Month
+
+Fee Table
+
+Every month should display:
+
+Month
+
+Fee Amount
+
+Status
+
+Paid
+
+Pending
+
+Payment Date
+
+Remarks
+
+Students can only VIEW fees.
+
+Students cannot edit payment information.
+
+---
+
+# My Courses
+
+Display:
+
+Current Class
+
+Subjects
+
+Teachers
+
+Batch Timing
+
+Study Days
+
+---
+
+# Notes
+
+Students can:
+
+Search Notes
+
+View Notes
+
+Download PDF
+
+---
+
+# Previous Year Papers
+
+Students can:
+
+View Papers
+
+Download Papers
+
+Search Papers
+
+---
+
+# Mock Tests
+
+Students can:
+
+Start Test
+
+Continue Test
+
+View Results
+
+Retake Test
+
+Performance Analytics
+
+---
+
+# Results
+
+Display:
+
+Test Name
+
+Marks
+
+Percentage
+
+Rank
+
+Correct Answers
+
+Incorrect Answers
+
+Download Result PDF
+
+---
+
+# Notifications
+
+Show notifications sent by Admin.
+
+Examples:
+
+New Notes Uploaded
+
+Fees Updated
+
+Holiday Notice
+
+Mock Test Published
+
+Admission Announcement
+
+---
+
+# Settings
+
+Allow student to:
+
+Change Password
+
+Enable Dark Mode
+
+Update Profile Picture
+
+Logout
+
+---
+
+# Security
+
+Students must only access their own dashboard.
+
+No student should be able to view another student's information.
+
+All routes should be protected using Firebase Authentication and Firestore security rules.
+
+The dashboard should be fully responsive, modern, fast-loading and production-ready with reusable components and Bootstrap 5.

@@ -1,0 +1,373 @@
+# PART – 4 : Notes, Previous Year Papers, Mock Tests, Gallery & Contact
+
+## Notes Page
+
+Create a premium **Notes** page with a modern coaching institute UI.
+
+### Features
+
+* Responsive Design
+* Search Bar
+* Filter System
+* Category Cards
+* Download PDF Button
+* View PDF Button
+* Subject-wise Notes
+* Class-wise Notes
+* Firebase Storage Integration
+* Admin Upload Support
+
+---
+
+# Notes Categories
+
+Create the following categories:
+
+### Class 6–8
+
+Subjects:
+
+* Mathematics
+* Science
+
+### Class 9–10
+
+Subjects:
+
+* Mathematics
+* Science
+
+### Class 11–12
+
+Subjects:
+
+* Mathematics
+* Science
+
+Each note card must contain:
+
+* PDF Thumbnail
+* Note Title
+* Subject
+* Class
+* Upload Date
+* File Size
+* Download Button
+* View Button
+
+---
+
+# Notes Search
+
+Allow searching by:
+
+* Note Name
+* Subject
+* Class
+
+Results should update instantly without refreshing the page.
+
+---
+
+# Notes Filter
+
+Filter options:
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Mathematics
+* Science
+
+---
+
+# Admin Notes Management
+
+Admin should be able to:
+
+* Upload PDF
+* Edit Note
+* Delete Note
+* Change Category
+* Update File
+
+Files must be stored in Firebase Storage.
+
+---
+
+# Previous Year Papers Page
+
+Create premium cards.
+
+Categories:
+
+* CBSE
+* UP Board
+* Sample Papers
+* Practice Papers
+
+Each paper card includes:
+
+* Paper Title
+* Class
+* Subject
+* Year
+* PDF Size
+* Download Button
+* View Button
+
+---
+
+# Previous Paper Search
+
+Search using:
+
+* Board
+* Subject
+* Year
+* Class
+
+---
+
+# Admin Previous Paper Management
+
+Admin should be able to:
+
+* Upload Paper
+* Delete Paper
+* Edit Paper
+* Replace PDF
+
+---
+
+# Mock Test Page
+
+Create a complete online Mock Test System.
+
+Students should be able to:
+
+* Select Class
+* Select Subject
+* Start Test
+* Submit Test
+
+---
+
+# Test Features
+
+* Timer
+* Auto Submit
+* Next Question
+* Previous Question
+* Skip Question
+* Mark for Review
+* Question Palette
+* Progress Indicator
+
+---
+
+# Result Page
+
+After submission display:
+
+* Total Questions
+* Attempted
+* Correct
+* Incorrect
+* Unanswered
+* Total Marks
+* Percentage
+* Grade
+* Pass / Fail
+
+Show:
+
+* Correct Answers
+* Wrong Answers
+* Solution Explanation
+
+Buttons:
+
+* Download Result PDF
+* Retake Test
+
+---
+
+# Student Dashboard Integration
+
+Student Dashboard should display:
+
+* Tests Attempted
+* Best Score
+* Latest Score
+* Performance Graph
+
+---
+
+# Admin Mock Test Management
+
+Admin can:
+
+* Add Questions
+* Edit Questions
+* Delete Questions
+* Create New Test
+* Publish Test
+* Set Duration
+* Set Passing Marks
+
+---
+
+# Gallery Page
+
+Create a premium responsive gallery.
+
+Include:
+
+* Classroom Photos
+* Events
+* Toppers
+* Activities
+
+Gallery Features:
+
+* Grid Layout
+* Masonry Layout
+* Lightbox Popup
+* Zoom Animation
+* Hover Effects
+* Lazy Loading
+
+---
+
+# Gallery Management
+
+Admin can:
+
+* Upload Images
+* Delete Images
+* Edit Captions
+* Organize Albums
+
+---
+
+# Contact Page
+
+Create a premium contact page.
+
+Include:
+
+### Contact Form
+
+Fields:
+
+* Full Name
+* Mobile Number
+* Email (Optional)
+* Subject
+* Message
+
+Button:
+
+Send Message
+
+Store enquiries in Firebase Firestore.
+
+---
+
+# Contact Information
+
+Display:
+
+Institute Name:
+
+PG Education
+
+Working Days:
+
+Monday – Saturday
+
+Working Hours:
+
+7:00 AM – 8:00 PM
+
+---
+
+# Contact Buttons
+
+Include:
+
+* WhatsApp Button
+* Call Now Button
+* YouTube Button
+* Email Button
+* Google Maps Button
+
+All buttons should open the respective application or page.
+
+---
+
+# Google Maps
+
+Embed a Google Maps placeholder with the option to replace it with the actual coaching location later.
+
+---
+
+# Contact Features
+
+Include:
+
+* Form Validation
+* Success Message
+* Error Handling
+* Loading Spinner
+* Firebase Integration
+
+---
+
+# Footer
+
+Create a premium footer.
+
+Include:
+
+* PG Education Logo
+* Learn Today, Lead Tomorrow
+* Quick Links
+* Courses
+* Student Login
+* Admin Login
+* Registration
+* Contact Details
+* Social Media Icons
+* Privacy Policy
+* Terms & Conditions
+* Disclaimer
+* Sitemap Link
+
+Display:
+
+**Copyright © 2026 PG Education. All Rights Reserved.**
+
+---
+
+# Global Features
+
+All pages must include:
+
+* Sticky Navbar
+* Scroll-to-Top Button
+* Dark Mode
+* Loading Animation
+* Smooth Scroll
+* AOS Scroll Animations
+* Responsive Layout
+* SEO Meta Tags
+* Open Graph Tags
+* Twitter Meta Tags
+* Lazy Loading
+* Fast Performance
+* Cross-Browser Compatibility
+* Accessible Components
+
+Generate production-ready, modular code using HTML5, CSS3, JavaScript, Bootstrap 5, Firebase Authentication, Firebase Firestore, Firebase Storage, and reusable components.

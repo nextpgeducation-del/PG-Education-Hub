@@ -1,0 +1,389 @@
+# PART – 2 : Home Page, Landing Page & About Section
+
+## Home Page
+
+Create a premium landing page for **PG Education** with a modern coaching institute design.
+
+The Home page should include:
+
+* Full Screen Hero Section
+* Animated Background
+* Modern Educational Illustration
+* Gradient Overlay
+* Responsive Layout
+* Glassmorphism Design
+* Scroll Animation
+* Attractive CTA Buttons
+
+---
+
+# Hero Section
+
+Display the following:
+
+## Heading
+
+**Welcome to PG Education**
+
+## Sub Heading
+
+**Learn Today, Lead Tomorrow**
+
+## Description
+
+Your Trusted Learning Partner for School Education.
+
+We provide quality coaching for:
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Mathematics
+* Science
+* CBSE Board
+* UP Board
+
+---
+
+# Hero Buttons
+
+Create two premium buttons.
+
+### Button 1
+
+Explore Courses
+
+Scroll to Courses Section.
+
+### Button 2
+
+Contact Us
+
+Scroll to Contact Section.
+
+Buttons should have:
+
+* Hover Animation
+* Ripple Effect
+* Smooth Transition
+* Icon
+* Gradient Background
+
+---
+
+# Hero Image
+
+Display a premium educational illustration.
+
+Include:
+
+* Students Studying
+* Books
+* Laptop
+* Teacher
+* Mathematics Icons
+* Science Icons
+
+Image should animate slightly while scrolling.
+
+---
+
+# Animated Statistics
+
+Create animated counters.
+
+Show:
+
+🎓 Students Enrolled
+
+1500+
+
+👨‍🏫 Expert Teachers
+
+10+
+
+📚 Courses
+
+7+
+
+⭐ Success Rate
+
+98%
+
+Use Count-Up Animation.
+
+---
+
+# Why Choose PG Education
+
+Create premium cards.
+
+Include:
+
+### Experienced Teachers
+
+Highly experienced Mathematics and Science faculty.
+
+### Affordable Fees
+
+Affordable monthly fee structure.
+
+### Modern Learning
+
+Digital notes and online mock tests.
+
+### Small Batch Size
+
+Better student-teacher interaction.
+
+### Weekly Tests
+
+Regular assessments.
+
+### Previous Year Papers
+
+Latest solved papers.
+
+### Performance Tracking
+
+Track student progress.
+
+Cards should have:
+
+* Hover Animation
+* Icon
+* Gradient Border
+* Glass Effect
+
+---
+
+# Student Testimonials
+
+Create a premium testimonial slider.
+
+Include:
+
+★★★★★
+
+Excellent coaching with experienced teachers.
+
+★★★★★
+
+Best Mathematics classes.
+
+★★★★★
+
+Very helpful notes and mock tests.
+
+Each testimonial should have:
+
+* Student Image Placeholder
+* Student Name
+* Class
+* Rating
+* Comment
+
+Auto Slider.
+
+Manual Navigation.
+
+---
+
+# Featured Courses Preview
+
+Show 7 premium cards.
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Mathematics
+* Science
+* CBSE Board
+* UP Board
+
+Each card includes:
+
+* Icon
+* Short Description
+* Explore Button
+* Hover Animation
+
+Clicking Explore should open the Course Modal (defined in Part 3).
+
+---
+
+# Latest Announcements
+
+Create a scrolling announcement section.
+
+Examples:
+
+Admissions Open
+
+New Batch Started
+
+Weekly Test on Sunday
+
+New Notes Uploaded
+
+Latest Mock Tests Available
+
+Use marquee-style or modern ticker animation.
+
+---
+
+# FAQ Section
+
+Create an accordion.
+
+Questions:
+
+### Which Classes are available?
+
+Answer:
+
+Class 6–8, Class 9–10 and Class 11–12.
+
+### Which Boards are covered?
+
+CBSE and UP Board.
+
+### Is Mock Test available?
+
+Yes.
+
+### Are Notes downloadable?
+
+Yes.
+
+### Is Registration free?
+
+Yes.
+
+### Can students check fee status online?
+
+Yes.
+
+Accordion should have smooth animation.
+
+---
+
+# Newsletter
+
+Create a newsletter section.
+
+Fields:
+
+Name
+
+Mobile Number
+
+Email (Optional)
+
+Subscribe Button
+
+Save data to Firebase.
+
+---
+
+# Call To Action Section
+
+Create a premium banner.
+
+Heading:
+
+Start Your Learning Journey Today
+
+Buttons:
+
+Register Now
+
+Contact Us
+
+Use gradient background.
+
+---
+
+# About Page
+
+Create a premium About Page.
+
+Heading:
+
+About PG Education
+
+Description:
+
+PG Education is a modern coaching institute dedicated to providing quality education for school students. Our aim is to build strong concepts through experienced teachers, regular practice, mock tests, notes, previous year papers and performance tracking.
+
+---
+
+# Coaching Available
+
+Display cards for:
+
+Class 6–8
+
+Class 9–10
+
+Class 11–12
+
+Mathematics
+
+Science
+
+CBSE Board
+
+UP Board
+
+Each card includes:
+
+* Icon
+* Description
+* Hover Animation
+
+---
+
+# Mission
+
+Provide quality education with affordable fees and modern technology.
+
+---
+
+# Vision
+
+Create confident students who achieve academic excellence.
+
+---
+
+# Values
+
+* Discipline
+* Honesty
+* Quality Education
+* Student Success
+* Continuous Learning
+
+---
+
+# Home Page Extra Features
+
+Add:
+
+* Dark Mode Toggle
+* Scroll To Top Button
+* Floating WhatsApp Button
+* Floating Call Button
+* Loading Animation
+* Page Transition Animation
+* Sticky Navbar
+* Smooth Scrolling
+* Lazy Loading Images
+* SEO Meta Tags
+* Open Graph Tags
+* Twitter Meta Tags
+* Favicon
+* Sitemap Support
+* Robots.txt Support
+
+All sections must be fully responsive for Mobile, Tablet and Desktop with smooth animations, premium UI, accessibility support and optimized performance.

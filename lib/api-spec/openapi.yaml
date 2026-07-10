@@ -10,6 +10,16 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: public
+    description: Public site operations
+  - name: studentAuth
+    description: Student authentication
+  - name: student
+    description: Student self-service
+  - name: adminAuth
+    description: Admin authentication
+  - name: admin
+    description: Admin management
 paths:
   /healthz:
     get:
@@ -24,6 +34,892 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /contact:
+    post:
+      operationId: submitContactMessage
+      tags: [public]
+      summary: Submit a contact enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessage"
+        "400":
+          description: Validation error
+
+  /newsletter:
+    post:
+      operationId: subscribeNewsletter
+      tags: [public]
+      summary: Subscribe to the newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsletterInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsletterSubscriber"
+        "400":
+          description: Validation error
+
+  /announcements:
+    get:
+      operationId: listPublicAnnouncements
+      tags: [public]
+      summary: List active announcements
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Announcement"
+
+  /notes:
+    get:
+      operationId: listNotes
+      tags: [public]
+      summary: List notes (optionally filtered)
+      parameters:
+        - name: className
+          in: query
+          schema:
+            $ref: "#/components/schemas/ClassLevel"
+        - name: subject
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+
+  /papers:
+    get:
+      operationId: listPapers
+      tags: [public]
+      summary: List previous year papers (optionally filtered)
+      parameters:
+        - name: board
+          in: query
+          schema:
+            type: string
+        - name: subject
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Paper"
+
+  /gallery:
+    get:
+      operationId: listGalleryImages
+      tags: [public]
+      summary: List gallery images
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryImage"
+
+  /stats:
+    get:
+      operationId: getPublicStats
+      tags: [public]
+      summary: Get homepage statistics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublicStats"
+
+  /auth/student/register:
+    post:
+      operationId: registerStudent
+      tags: [studentAuth]
+      summary: Register a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StudentRegistrationInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "400":
+          description: Validation error
+        "409":
+          description: Mobile number already registered
+
+  /auth/student/login:
+    post:
+      operationId: loginStudent
+      tags: [studentAuth]
+      summary: Login as a student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StudentLoginInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Invalid credentials
+
+  /auth/student/logout:
+    post:
+      operationId: logoutStudent
+      tags: [studentAuth]
+      summary: Logout current student
+      responses:
+        "204":
+          description: Logged out
+
+  /auth/student/me:
+    get:
+      operationId: getCurrentStudent
+      tags: [studentAuth]
+      summary: Get currently logged in student
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+
+  /student/profile:
+    get:
+      operationId: getStudentProfile
+      tags: [student]
+      summary: Get own profile
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+    patch:
+      operationId: updateStudentProfilePhoto
+      tags: [student]
+      summary: Update own profile photo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfilePhotoUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+
+  /student/change-password:
+    post:
+      operationId: changeStudentPassword
+      tags: [student]
+      summary: Change own password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PasswordChangeInput"
+      responses:
+        "204":
+          description: Changed
+        "400":
+          description: Validation error
+        "401":
+          description: Not logged in / wrong current password
+
+  /student/fees:
+    get:
+      operationId: getStudentFees
+      tags: [student]
+      summary: Get own fee schedule
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Fee"
+        "401":
+          description: Not logged in
+
+  /student/notifications:
+    get:
+      operationId: getStudentNotifications
+      tags: [student]
+      summary: Get notifications targeted at this student
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+        "401":
+          description: Not logged in
+
+  /auth/admin/login:
+    post:
+      operationId: loginAdmin
+      tags: [adminAuth]
+      summary: Login as admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Admin"
+        "401":
+          description: Invalid credentials
+
+  /auth/admin/logout:
+    post:
+      operationId: logoutAdmin
+      tags: [adminAuth]
+      summary: Logout current admin
+      responses:
+        "204":
+          description: Logged out
+
+  /auth/admin/me:
+    get:
+      operationId: getCurrentAdmin
+      tags: [adminAuth]
+      summary: Get currently logged in admin
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Admin"
+        "401":
+          description: Not logged in
+
+  /admin/change-password:
+    post:
+      operationId: changeAdminPassword
+      tags: [admin]
+      summary: Change admin password (used for forced first-login change too)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PasswordChangeInput"
+      responses:
+        "204":
+          description: Changed
+        "400":
+          description: Validation error
+        "401":
+          description: Not logged in / wrong current password
+
+  /admin/dashboard-summary:
+    get:
+      operationId: getAdminDashboardSummary
+      tags: [admin]
+      summary: Get admin dashboard summary metrics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminDashboardSummary"
+        "401":
+          description: Not logged in
+
+  /admin/students:
+    get:
+      operationId: listStudents
+      tags: [admin]
+      summary: List students (search/filter/sort)
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: className
+          in: query
+          schema:
+            $ref: "#/components/schemas/ClassLevel"
+        - name: status
+          in: query
+          schema:
+            $ref: "#/components/schemas/StudentStatus"
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [newest, oldest, nameAsc, nameDesc]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createStudent
+      tags: [admin]
+      summary: Manually add a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StudentCreateInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "400":
+          description: Validation error
+        "401":
+          description: Not logged in
+
+  /admin/students/{id}:
+    get:
+      operationId: getStudent
+      tags: [admin]
+      summary: Get a student by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+    patch:
+      operationId: updateStudent
+      tags: [admin]
+      summary: Update a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StudentUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+    delete:
+      operationId: deleteStudent
+      tags: [admin]
+      summary: Permanently delete a terminated student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/students/{id}/terminate:
+    post:
+      operationId: terminateStudent
+      tags: [admin]
+      summary: Terminate a student (moves to terminated list, 60-day retention)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TerminationInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/students/{id}/restore:
+    post:
+      operationId: restoreStudent
+      tags: [admin]
+      summary: Restore a terminated student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/terminated-students:
+    get:
+      operationId: listTerminatedStudents
+      tags: [admin]
+      summary: List terminated students with days remaining
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Student"
+        "401":
+          description: Not logged in
+
+  /admin/students/{id}/fees:
+    get:
+      operationId: getStudentFeesAdmin
+      tags: [admin]
+      summary: Get a student's fee schedule (admin view)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Fee"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/fees/{feeId}:
+    patch:
+      operationId: updateFee
+      tags: [admin]
+      summary: Update a fee record (mark paid, apply discount, etc.)
+      parameters:
+        - name: feeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FeeUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Fee"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/notes:
+    get:
+      operationId: listNotesAdmin
+      tags: [admin]
+      summary: List all notes (admin)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Note"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createNote
+      tags: [admin]
+      summary: Upload a note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NoteInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Note"
+        "401":
+          description: Not logged in
+
+  /admin/notes/{id}:
+    delete:
+      operationId: deleteNote
+      tags: [admin]
+      summary: Delete a note
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/papers:
+    get:
+      operationId: listPapersAdmin
+      tags: [admin]
+      summary: List all papers (admin)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Paper"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createPaper
+      tags: [admin]
+      summary: Upload a paper
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaperInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Paper"
+        "401":
+          description: Not logged in
+
+  /admin/papers/{id}:
+    delete:
+      operationId: deletePaper
+      tags: [admin]
+      summary: Delete a paper
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/gallery:
+    get:
+      operationId: listGalleryAdmin
+      tags: [admin]
+      summary: List all gallery images (admin)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryImage"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createGalleryImage
+      tags: [admin]
+      summary: Upload a gallery image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GalleryImageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GalleryImage"
+        "401":
+          description: Not logged in
+
+  /admin/gallery/{id}:
+    delete:
+      operationId: deleteGalleryImage
+      tags: [admin]
+      summary: Delete a gallery image
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/announcements:
+    get:
+      operationId: listAnnouncementsAdmin
+      tags: [admin]
+      summary: List all announcements (admin)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Announcement"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createAnnouncement
+      tags: [admin]
+      summary: Create an announcement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnnouncementInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Announcement"
+        "401":
+          description: Not logged in
+
+  /admin/announcements/{id}:
+    patch:
+      operationId: updateAnnouncement
+      tags: [admin]
+      summary: Update an announcement
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnnouncementUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Announcement"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+    delete:
+      operationId: deleteAnnouncement
+      tags: [admin]
+      summary: Delete an announcement
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
+  /admin/contact-messages:
+    get:
+      operationId: listContactMessages
+      tags: [admin]
+      summary: List contact enquiries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContactMessage"
+        "401":
+          description: Not logged in
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +930,378 @@ components:
       required:
         - status
 
+    ClassLevel:
+      type: string
+      enum: ["6-8", "9-10", "11-12"]
+
+    StudentStatus:
+      type: string
+      enum: [active, inactive, suspended, terminated]
+
+    FeeStatus:
+      type: string
+      enum: [paid, partial, pending]
+
+    PaymentMode:
+      type: string
+      enum: [cash, upi, bank_transfer, debit_card, credit_card, other]
+
+    Student:
+      type: object
+      required:
+        - id
+        - studentId
+        - admissionNumber
+        - fullName
+        - fatherName
+        - mobile
+        - email
+        - pinCode
+        - schoolName
+        - className
+        - admissionDate
+        - registrationDate
+        - status
+        - profilePhotoUrl
+        - terminationDate
+        - terminationReason
+        - createdAt
+      properties:
+        id: { type: integer }
+        studentId: { type: string }
+        admissionNumber: { type: string }
+        fullName: { type: string }
+        fatherName: { type: string }
+        mobile: { type: string }
+        email: { type: ["string", "null"] }
+        pinCode: { type: string }
+        schoolName: { type: string }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        admissionDate: { type: string, format: date }
+        registrationDate: { type: string, format: date-time }
+        status:
+          $ref: "#/components/schemas/StudentStatus"
+        profilePhotoUrl: { type: ["string", "null"] }
+        terminationDate: { type: ["string", "null"], format: date-time }
+        terminationReason: { type: ["string", "null"] }
+        createdAt: { type: string, format: date-time }
+
+    StudentRegistrationInput:
+      type: object
+      required:
+        - fullName
+        - fatherName
+        - mobile
+        - pinCode
+        - schoolName
+        - className
+        - password
+      properties:
+        fullName: { type: string, minLength: 1 }
+        fatherName: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        email: { type: string }
+        pinCode: { type: string, minLength: 6, maxLength: 6 }
+        schoolName: { type: string, minLength: 1 }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        password: { type: string, minLength: 8 }
+
+    StudentLoginInput:
+      type: object
+      required: [mobile, password]
+      properties:
+        mobile: { type: string }
+        password: { type: string }
+
+    StudentCreateInput:
+      type: object
+      required:
+        - fullName
+        - fatherName
+        - mobile
+        - pinCode
+        - schoolName
+        - className
+        - password
+        - admissionDate
+      properties:
+        fullName: { type: string, minLength: 1 }
+        fatherName: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        email: { type: string }
+        pinCode: { type: string, minLength: 6, maxLength: 6 }
+        schoolName: { type: string, minLength: 1 }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        password: { type: string, minLength: 8 }
+        admissionDate: { type: string, format: date }
+
+    StudentUpdate:
+      type: object
+      properties:
+        fullName: { type: string }
+        fatherName: { type: string }
+        mobile: { type: string }
+        email: { type: string }
+        pinCode: { type: string }
+        schoolName: { type: string }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        admissionDate: { type: string, format: date }
+        status:
+          $ref: "#/components/schemas/StudentStatus"
+
+    ProfilePhotoUpdate:
+      type: object
+      required: [profilePhotoUrl]
+      properties:
+        profilePhotoUrl: { type: string }
+
+    PasswordChangeInput:
+      type: object
+      required: [currentPassword, newPassword]
+      properties:
+        currentPassword: { type: string }
+        newPassword: { type: string, minLength: 8 }
+
+    TerminationInput:
+      type: object
+      required: [reason]
+      properties:
+        reason: { type: string }
+
+    Admin:
+      type: object
+      required: [id, username, mustChangePassword, lastLoginAt]
+      properties:
+        id: { type: integer }
+        username: { type: string }
+        mustChangePassword: { type: boolean }
+        lastLoginAt: { type: ["string", "null"], format: date-time }
+
+    AdminLoginInput:
+      type: object
+      required: [username, password]
+      properties:
+        username: { type: string }
+        password: { type: string }
+
+    Fee:
+      type: object
+      required:
+        - id
+        - studentId
+        - month
+        - year
+        - feeAmount
+        - discount
+        - lateFee
+        - amountPaid
+        - status
+        - paymentDate
+        - receiptNumber
+        - paymentMode
+        - remarks
+      properties:
+        id: { type: integer }
+        studentId: { type: integer }
+        month: { type: integer, minimum: 1, maximum: 12 }
+        year: { type: integer }
+        feeAmount: { type: number }
+        discount: { type: number }
+        lateFee: { type: number }
+        amountPaid: { type: number }
+        status:
+          $ref: "#/components/schemas/FeeStatus"
+        paymentDate: { type: ["string", "null"], format: date }
+        receiptNumber: { type: ["string", "null"] }
+        paymentMode:
+          type: ["string", "null"]
+          enum: [cash, upi, bank_transfer, debit_card, credit_card, other, null]
+        remarks: { type: ["string", "null"] }
+
+    FeeUpdate:
+      type: object
+      properties:
+        feeAmount: { type: number }
+        discount: { type: number }
+        lateFee: { type: number }
+        amountPaid: { type: number }
+        status:
+          $ref: "#/components/schemas/FeeStatus"
+        paymentDate: { type: string, format: date }
+        paymentMode:
+          $ref: "#/components/schemas/PaymentMode"
+        remarks: { type: string }
+
+    Note:
+      type: object
+      required: [id, title, subject, className, fileUrl, uploadDate]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        subject: { type: string }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        fileUrl: { type: string }
+        uploadDate: { type: string, format: date-time }
+
+    NoteInput:
+      type: object
+      required: [title, subject, className, fileUrl]
+      properties:
+        title: { type: string, minLength: 1 }
+        subject: { type: string, minLength: 1 }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        fileUrl: { type: string, minLength: 1 }
+
+    Paper:
+      type: object
+      required: [id, title, board, subject, year, className, fileUrl, uploadDate]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        board: { type: string }
+        subject: { type: string }
+        year: { type: integer }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        fileUrl: { type: string }
+        uploadDate: { type: string, format: date-time }
+
+    PaperInput:
+      type: object
+      required: [title, board, subject, year, className, fileUrl]
+      properties:
+        title: { type: string, minLength: 1 }
+        board: { type: string, minLength: 1 }
+        subject: { type: string, minLength: 1 }
+        year: { type: integer }
+        className:
+          $ref: "#/components/schemas/ClassLevel"
+        fileUrl: { type: string, minLength: 1 }
+
+    GalleryImage:
+      type: object
+      required: [id, imageUrl, caption, uploadDate]
+      properties:
+        id: { type: integer }
+        imageUrl: { type: string }
+        caption: { type: ["string", "null"] }
+        uploadDate: { type: string, format: date-time }
+
+    GalleryImageInput:
+      type: object
+      required: [imageUrl]
+      properties:
+        imageUrl: { type: string, minLength: 1 }
+        caption: { type: string }
+
+    Announcement:
+      type: object
+      required: [id, title, description, pinned, createdAt]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        description: { type: string }
+        pinned: { type: boolean }
+        createdAt: { type: string, format: date-time }
+
+    AnnouncementInput:
+      type: object
+      required: [title, description]
+      properties:
+        title: { type: string, minLength: 1 }
+        description: { type: string, minLength: 1 }
+        pinned: { type: boolean }
+
+    AnnouncementUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        pinned: { type: boolean }
+
+    ContactMessage:
+      type: object
+      required: [id, fullName, mobile, email, subject, message, createdAt]
+      properties:
+        id: { type: integer }
+        fullName: { type: string }
+        mobile: { type: string }
+        email: { type: ["string", "null"] }
+        subject: { type: string }
+        message: { type: string }
+        createdAt: { type: string, format: date-time }
+
+    ContactMessageInput:
+      type: object
+      required: [fullName, mobile, subject, message]
+      properties:
+        fullName: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        email: { type: string }
+        subject: { type: string, minLength: 1 }
+        message: { type: string, minLength: 1 }
+
+    NewsletterSubscriber:
+      type: object
+      required: [id, name, mobile, email, createdAt]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        mobile: { type: string }
+        email: { type: ["string", "null"] }
+        createdAt: { type: string, format: date-time }
+
+    NewsletterInput:
+      type: object
+      required: [name, mobile]
+      properties:
+        name: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        email: { type: string }
+
+    Notification:
+      type: object
+      required: [id, title, description, createdAt]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        description: { type: string }
+        createdAt: { type: string, format: date-time }
+
+    PublicStats:
+      type: object
+      required:
+        - studentsEnrolled
+        - expertTeachers
+        - coursesCount
+        - successRate
+      properties:
+        studentsEnrolled: { type: integer }
+        expertTeachers: { type: integer }
+        coursesCount: { type: integer }
+        successRate: { type: integer }
+
+    AdminDashboardSummary:
+      type: object
+      required:
+        - totalStudents
+        - activeStudents
+        - terminatedStudents
+        - totalFeesCollected
+        - pendingFees
+        - monthlyCollection
+        - newAdmissionsThisMonth
+      properties:
+        totalStudents: { type: integer }
+        activeStudents: { type: integer }
+        terminatedStudents: { type: integer }
+        totalFeesCollected: { type: number }
+        pendingFees: { type: number }
+        monthlyCollection: { type: number }
+        newAdmissionsThisMonth: { type: integer }

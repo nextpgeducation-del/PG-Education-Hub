@@ -1,0 +1,238 @@
+# Build a Premium Educational Website for "PG Education"
+
+Create a **modern, premium, fully responsive Educational Coaching Management Website** named **PG Education**.
+
+The website should look like a professional coaching institute with a clean UI, premium design, smooth animations, fast loading speed, accessible components, and production-ready architecture.
+
+The project must be built using modern web development standards and should be suitable for deployment.
+
+---
+
+# Brand Identity
+
+**Website Name:** PG Education
+
+**Tagline:** Learn Today, Lead Tomorrow
+
+**Theme Colors:**
+
+* Primary Blue
+* White
+* Orange
+
+**Typography**
+
+* Google Font: Poppins
+
+**Icons**
+
+* Font Awesome Latest Version
+
+---
+
+# Technologies
+
+Use:
+
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+* Bootstrap 5
+* Firebase Authentication
+* Firebase Firestore Database
+* Firebase Storage
+* Font Awesome
+* Google Fonts
+* AOS Animation Library
+* Chart.js (Dashboard Analytics)
+* SweetAlert2
+* jsPDF (Fee Receipt PDF)
+* Progressive Web App (PWA)
+
+---
+
+# Folder Structure
+
+Create a clean production-ready folder structure.
+
+```text
+PG-Education/
+│
+├── index.html
+├── about.html
+├── courses.html
+├── faculty.html
+├── notes.html
+├── papers.html
+├── mocktest.html
+├── gallery.html
+├── contact.html
+├── login.html
+├── register.html
+├── student-dashboard.html
+├── admin-dashboard.html
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   ├── icons/
+│   ├── pdf/
+│   └── fonts/
+│
+├── firebase/
+│   ├── firebase-config.js
+│   ├── auth.js
+│   ├── firestore.js
+│   └── storage.js
+│
+├── manifest.json
+├── service-worker.js
+├── robots.txt
+├── sitemap.xml
+└── README.md
+```
+
+---
+
+# Design Requirements
+
+The entire website must have:
+
+* Premium Modern UI
+* Glassmorphism Cards
+* Soft Shadows
+* Rounded Corners
+* Smooth Hover Effects
+* Animated Buttons
+* Premium Gradients
+* Professional Color Palette
+* Mobile First Design
+* Responsive Layout
+* SEO Friendly
+* Fast Loading
+* Clean Code
+* Reusable Components
+* Accessible Design
+* Lazy Loading Images
+* Scroll Animations
+* Dark Mode
+* Loading Animation
+* Scroll To Top Button
+
+---
+
+# Navigation Menu
+
+Create a sticky responsive navigation bar.
+
+Navigation Items:
+
+* Home
+* About
+* Courses
+* Faculty
+* Notes
+* Previous Year Papers
+* Mock Tests
+* Gallery
+* Contact
+* Student Login
+* Admin Login
+* Register
+
+Navbar Features:
+
+* Sticky Header
+* Mobile Menu
+* Active Menu Highlight
+* Animated Underline
+* Search Button
+* Dark Mode Toggle
+
+---
+
+# Authentication System
+
+The website must include a complete authentication system.
+
+There should be three user types:
+
+1. Visitor
+2. Student
+3. Admin
+
+Visitor can:
+
+* View public pages
+* Browse courses
+* Read notes information
+* Contact coaching
+
+Student can:
+
+* Register
+* Login
+* Access Student Dashboard
+* Download Notes
+* Attempt Mock Tests
+* View Previous Year Papers
+* View Fee Status
+
+Admin can:
+
+* Login
+* Manage Entire Website
+* Manage Students
+* Manage Fees
+* Upload Notes
+* Upload Papers
+* Upload Gallery Images
+* Manage Mock Tests
+* Generate Reports
+
+---
+
+# Default Admin Account
+
+Create one default administrator account.
+
+Username:
+
+UltimateAdmin
+
+Default Password:
+
+Ultimate@2006
+
+Security Rules:
+
+* Store password securely using hashing.
+* Force password change on first login.
+* Use secure session management.
+* Use role-based access control.
+* Prevent unauthorized access to the Admin Dashboard.
+
+---
+
+# General Website Features
+
+The complete website must include:
+
+* Responsive Design
+* SEO Optimization
+* Progressive Web App (PWA)
+* Fast Loading
+* Google Fonts
+* Bootstrap Components
+* Font Awesome Icons
+* Clean Folder Structure
+* Well Commented Code
+* Production Ready Code
+* Reusable Components
+* Cross Browser Compatibility
+* Mobile Friendly
+* Accessibility Support
+* High Performance Optimization
+
+Generate clean, modular, scalable, production-ready code with separate HTML, CSS, JavaScript, and Firebase files. Ensure every page, navigation item, form, button, popup, dashboard, and interactive feature works correctly without placeholder errors.

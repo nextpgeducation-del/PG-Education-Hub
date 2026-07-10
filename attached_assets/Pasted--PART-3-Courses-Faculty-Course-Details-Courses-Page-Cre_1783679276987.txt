@@ -1,0 +1,353 @@
+# PART – 3 : Courses, Faculty & Course Details
+
+## Courses Page
+
+Create a premium **Courses** page with a modern coaching institute UI.
+
+Display **7 Premium Course Cards** in a responsive grid.
+
+Courses:
+
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Mathematics
+* Science
+* CBSE Board
+* UP Board
+
+Each course card must include:
+
+* Premium Icon
+* Course Image
+* Course Name
+* Short Description
+* "Explore" Button
+* Hover Animation
+* Shadow Effect
+* Glassmorphism Design
+* Smooth Transition
+
+---
+
+# Course Details Modal
+
+When the user clicks the **Explore** button, **do not open another page**.
+
+Instead, open a **Premium Glassmorphism Modal Popup**.
+
+The modal must have:
+
+* Blur Background
+* Glassmorphism Card
+* Close Button
+* Smooth Open & Close Animation
+* Responsive Layout
+* Bootstrap Modal
+* Accessible Design
+
+---
+
+# Class 6–8 Course Popup
+
+Display:
+
+## Teachers
+
+**Mathematics Teacher**
+
+Mr. Priyanshu
+
+**Science Teacher**
+
+Mr. Ravi Yadav
+
+---
+
+## Study Timing
+
+Monday – Saturday
+
+Morning Batch
+
+**7:00 AM – 9:00 AM**
+
+Sunday Holiday
+
+---
+
+## Features
+
+* Small Batch Size
+* Weekly Test
+* Monthly Test
+* Notes
+* Doubt Session
+* Mock Test
+* Previous Year Questions
+
+Buttons:
+
+* Register Now
+* Contact Us
+
+---
+
+# Class 9–10 Course Popup
+
+Teachers
+
+Mathematics
+
+Mr. Priyanshu
+
+Science
+
+Mr. Ravi Yadav
+
+Study Timing
+
+Monday – Saturday
+
+Evening Batch
+
+**4:00 PM – 6:00 PM**
+
+Sunday Holiday
+
+Features
+
+* Concept Based Learning
+* Weekly Test
+* Monthly Test
+* Mock Test
+* Notes
+* Board Preparation
+* Doubt Session
+
+Buttons
+
+* Register
+* Contact
+
+---
+
+# Class 11–12 Course Popup
+
+Teachers
+
+Mathematics
+
+Mr. Priyanshu
+
+Science
+
+Mr. Ravi Yadav
+
+Study Timing
+
+Monday – Saturday
+
+Evening Batch
+
+**6:00 PM – 8:00 PM**
+
+Sunday Holiday
+
+Features
+
+* Board Preparation
+* Competitive Basics
+* Weekly Test
+* Monthly Test
+* Mock Tests
+* Digital Notes
+* Doubt Classes
+
+Buttons
+
+* Register
+* Contact
+
+---
+
+# Mathematics Course
+
+Display:
+
+* Complete Mathematics Coaching
+* Concept Building
+* Formula Revision
+* Practice Questions
+* PYQs
+* Weekly Tests
+
+---
+
+# Science Course
+
+Display:
+
+* Physics
+* Chemistry
+* Biology
+
+Include:
+
+* Practical Concepts
+* Diagrams
+* Notes
+* Weekly Tests
+* Mock Tests
+
+---
+
+# CBSE Board Course
+
+Include:
+
+* Latest NCERT
+* Previous Year Papers
+* Sample Papers
+* Board Strategy
+* Revision Notes
+
+---
+
+# UP Board Course
+
+Include:
+
+* UP Board Syllabus
+* Important Questions
+* Model Papers
+* Notes
+* Board Preparation
+
+---
+
+# Faculty Page
+
+Create premium faculty cards.
+
+Faculty Section Heading:
+
+Meet Our Expert Faculty
+
+---
+
+# Faculty Card 1
+
+Photo Placeholder (Circular)
+
+Name:
+
+Mr. Priyanshu
+
+Subject:
+
+Mathematics
+
+Introduction:
+
+Experienced Mathematics teacher focused on concept clarity, problem-solving techniques, board preparation, and student success.
+
+Button:
+
+View Profile
+
+---
+
+# Faculty Card 2
+
+Photo Placeholder (Circular)
+
+Name:
+
+Mr. Ravi Yadav
+
+Subject:
+
+Science
+
+Introduction:
+
+Experienced Science teacher helping students understand Physics, Chemistry, and Biology through practical and concept-based learning.
+
+Button:
+
+View Profile
+
+---
+
+# Faculty Profile Popup
+
+Clicking **View Profile** should open a modal displaying:
+
+* Teacher Photo
+* Full Name
+* Subject
+* Qualification
+* Experience
+* Teaching Style
+* Achievements
+* Contact Information (Admin Controlled)
+
+Use a modern glassmorphism popup with animations.
+
+---
+
+# Student Registration Button
+
+Every course page and popup must include a **Register Now** button.
+
+Clicking it opens the **Student Registration Page** (implemented in Part 5).
+
+---
+
+# Search Courses
+
+Add a search bar above the course cards.
+
+Allow users to search by:
+
+* Class
+* Subject
+* Board
+
+Results should update instantly without reloading the page.
+
+---
+
+# Course Filters
+
+Provide filter buttons:
+
+* All
+* Class 6–8
+* Class 9–10
+* Class 11–12
+* Mathematics
+* Science
+* CBSE
+* UP Board
+
+Filter cards dynamically using JavaScript.
+
+---
+
+# Course Page Features
+
+Include:
+
+* Scroll Animations
+* Hover Effects
+* Glassmorphism
+* Responsive Cards
+* Lazy Loaded Images
+* Dark Mode Support
+* Mobile Friendly Layout
+* Accessibility Compliance
+* SEO Friendly Structure
+
+Generate clean, modular, production-ready code using Bootstrap 5, HTML5, CSS3, JavaScript, and reusable components.

@@ -1,0 +1,258 @@
+# PART – 10 : Final Production Requirements, Advanced Features & AI Instructions
+
+## Final Project Objective
+
+Build a **100% Production-Ready Coaching Management System** named **PG Education**.
+
+This should not be a simple educational website. It must function as a complete **Coaching Institute ERP + Learning Management System (LMS)** with a premium UI, secure backend, real-time database integration, and scalable architecture.
+
+---
+
+# Overall Requirements
+
+Generate the complete project with:
+
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+* Bootstrap 5
+* Firebase Authentication
+* Cloud Firestore
+* Firebase Storage
+* Font Awesome
+* Google Fonts (Poppins)
+* Chart.js
+* SweetAlert2
+* jsPDF
+* Progressive Web App (PWA)
+
+Use a clean, modular architecture with reusable components.
+
+---
+
+# UI / UX Requirements
+
+The entire website must include:
+
+* Premium Glassmorphism Design
+* Modern Dashboard UI
+* Responsive Cards
+* Professional Color Palette (Blue, White, Orange)
+* Gradient Buttons
+* Hover Animations
+* Smooth Page Transitions
+* Loading Screen
+* Skeleton Loading
+* Scroll Animations (AOS)
+* Sticky Navbar
+* Scroll Progress Bar
+* Scroll-to-Top Button
+* Dark Mode (remember user's preference)
+* Mobile First Design
+
+---
+
+# Student Workflow
+
+The complete student flow should be:
+
+1. Student visits the website.
+2. Student explores courses.
+3. Student registers.
+4. Email remains optional.
+5. Student ID is generated automatically.
+6. Admission Number is generated automatically.
+7. Student profile is created.
+8. Student Fee Dashboard (12 months) is created automatically.
+9. Student appears instantly in the Admin Dashboard.
+10. Student logs in using Mobile Number + Password.
+11. Student accesses Dashboard.
+12. Student views fees, notes, mock tests, results and notifications.
+
+---
+
+# Admin Workflow
+
+The complete admin flow should be:
+
+1. Admin logs in using:
+
+   * Username: **UltimateAdmin**
+   * Password: **Ultimate@2006**
+2. On first login, force password change.
+3. Admin opens Dashboard.
+4. Admin views analytics.
+5. Admin manages students.
+6. Admin manages fees.
+7. Admin uploads notes.
+8. Admin uploads previous year papers.
+9. Admin creates mock tests.
+10. Admin manages gallery.
+11. Admin sends announcements.
+12. Admin generates reports.
+13. Admin terminates students.
+14. Admin restores students within 60 days.
+15. Admin permanently deletes students after confirmation.
+
+---
+
+# Functional Requirements
+
+Every feature must work correctly without placeholders.
+
+Required modules include:
+
+* Home
+* About
+* Courses
+* Faculty
+* Notes
+* Previous Year Papers
+* Mock Tests
+* Gallery
+* Contact
+* Student Registration
+* Student Login
+* Student Dashboard
+* Admin Login
+* Admin Dashboard
+* Fee Management
+* Notifications
+* Reports
+* Announcements
+* Terminated Students
+* Deleted Students (60-day retention)
+* Restore Student
+* Search
+* Settings
+* Dark Mode
+* Profile Management
+* Activity Logs
+
+---
+
+# Database Requirements
+
+The system must maintain relationships between:
+
+* Students
+* Fees
+* Notes
+* Papers
+* Mock Tests
+* Results
+* Notifications
+* Gallery
+* Reports
+* Activity Logs
+
+Deleting or restoring a student must update related records consistently.
+
+---
+
+# Security Requirements
+
+Implement:
+
+* Role-Based Access Control (RBAC)
+* Secure Authentication
+* Protected Routes
+* Session Management
+* Password Reset
+* Password Hashing / Secure Storage
+* Firestore Security Rules
+* Input Validation
+* XSS Protection
+* CSRF Protection (where applicable)
+* Secure File Upload Validation
+
+---
+
+# Performance Requirements
+
+Target:
+
+* Lighthouse Performance ≥ 90
+* SEO ≥ 90
+* Accessibility ≥ 90
+* Best Practices ≥ 90
+
+Optimize:
+
+* Images
+* Fonts
+* JavaScript
+* CSS
+* Caching
+* Lazy Loading
+
+---
+
+# Code Generation Rules
+
+Generate:
+
+* Separate HTML files
+* Separate CSS files
+* Separate JavaScript files
+* Separate Firebase configuration files
+* Reusable Components
+* Modular Architecture
+* Clean Comments
+* Meaningful File Names
+
+No placeholder buttons or incomplete sections.
+
+Every button, form, modal, dashboard, search box and navigation link must be fully functional.
+
+---
+
+# Browser Support
+
+Support the latest versions of:
+
+* Google Chrome
+* Microsoft Edge
+* Mozilla Firefox
+* Safari
+
+Ensure full responsiveness on:
+
+* Mobile Phones
+* Tablets
+* Laptops
+* Desktop Computers
+
+---
+
+# Final Deliverables
+
+Generate the complete project with:
+
+* Full source code
+* Production-ready folder structure
+* Firebase configuration placeholders (easy to replace)
+* Database integration
+* Authentication system
+* Admin Dashboard
+* Student Dashboard
+* Fee Management
+* Notes Management
+* Previous Year Papers
+* Mock Test System
+* Gallery Management
+* Contact System
+* SEO setup
+* PWA setup
+* Error pages
+* Deployment-ready files
+
+---
+
+# Final AI Instruction
+
+Do **not** generate demo-only pages or placeholder components.
+
+Generate a **complete, production-ready, fully functional Coaching Management System** named **PG Education** with all requested features integrated seamlessly. Every page, dashboard, modal, authentication flow, database interaction, search, report, notification, and fee management module must work correctly and be connected through Firebase.
+
+Ensure clean architecture, maintainable code, accessibility, responsive design, modern UI/UX, and deployment readiness for real-world use.
