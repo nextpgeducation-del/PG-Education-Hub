@@ -35,6 +35,9 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
             <div className="flex items-center gap-2 ml-4">
+              <Link href="/admin/login">
+                <Button variant="ghost" className="text-slate-600 hover:text-primary">Admin Login</Button>
+              </Link>
               <Link href="/student/login">
                 <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">Student Login</Button>
               </Link>
@@ -66,6 +69,9 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               </Link>
               <Link href="/student/register" onClick={() => setIsMenuOpen(false)}>
                 <Button className="w-full justify-center">Join Now</Button>
+              </Link>
+              <Link href="/admin/login" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-center text-slate-600">Admin Login</Button>
               </Link>
             </div>
           </div>

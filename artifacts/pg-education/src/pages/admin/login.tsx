@@ -37,7 +37,7 @@ export default function AdminLogin() {
       toast({
         variant: "destructive",
         title: "Login Failed",
-        description: "Invalid admin credentials.",
+        description: "Invalid Username or Password",
       });
     }
   };
