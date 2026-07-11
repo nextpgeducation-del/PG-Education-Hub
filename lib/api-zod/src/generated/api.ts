@@ -646,6 +646,97 @@ export const RestoreStudentResponse = zod.object({
 
 
 /**
+ * @summary List all teachers (search by name or mobile)
+ */
+export const ListTeachersQueryParams = zod.object({
+  "search": zod.coerce.string().optional()
+})
+
+export const ListTeachersResponseItem = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "subject": zod.string(),
+  "mobile": zod.string(),
+  "photoUrl": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListTeachersResponse = zod.array(ListTeachersResponseItem)
+
+
+/**
+ * @summary Add a new teacher
+ */
+
+
+export const createTeacherBodyMobileMin = 10;
+export const createTeacherBodyMobileMax = 10;
+
+
+
+export const CreateTeacherBody = zod.object({
+  "name": zod.string().min(1),
+  "subject": zod.string().min(1),
+  "mobile": zod.string().min(createTeacherBodyMobileMin).max(createTeacherBodyMobileMax),
+  "photoUrl": zod.string().optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const CreateTeacherResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "subject": zod.string(),
+  "mobile": zod.string(),
+  "photoUrl": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
+ * @summary Update a teacher
+ */
+export const UpdateTeacherParams = zod.object({
+  "id": zod.coerce.number()
+})
+
+
+
+export const updateTeacherBodyMobileMin = 10;
+export const updateTeacherBodyMobileMax = 10;
+
+
+
+export const UpdateTeacherBody = zod.object({
+  "name": zod.string().min(1).optional(),
+  "subject": zod.string().min(1).optional(),
+  "mobile": zod.string().min(updateTeacherBodyMobileMin).max(updateTeacherBodyMobileMax).optional(),
+  "photoUrl": zod.string().optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateTeacherResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "subject": zod.string(),
+  "mobile": zod.string(),
+  "photoUrl": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
+ * @summary Delete a teacher
+ */
+export const DeleteTeacherParams = zod.object({
+  "id": zod.coerce.number()
+})
+
+export const DeleteTeacherResponse = zod.void()
+
+
+/**
  * @summary List terminated students with days remaining
  */
 export const ListTerminatedStudentsResponseItem = zod.object({

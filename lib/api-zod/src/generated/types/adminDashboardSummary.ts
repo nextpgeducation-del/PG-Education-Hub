@@ -14,4 +14,8 @@ export interface AdminDashboardSummary {
   pendingFees: number;
   monthlyCollection: number;
   newAdmissionsThisMonth: number;
+  todaysNewRegistrations: number;
+  totalNotes: number;
+  totalPapers: number;
+  totalMockTests: number;
 }

@@ -56,7 +56,16 @@ import {
   UpdateAnnouncementResponse,
   DeleteAnnouncementParams,
   ListContactMessagesResponse,
+  ListTeachersQueryParams,
+  ListTeachersResponse,
+  CreateTeacherBody,
+  CreateTeacherResponse,
+  UpdateTeacherParams,
+  UpdateTeacherBody,
+  UpdateTeacherResponse,
+  DeleteTeacherParams,
 } from "@workspace/api-zod";
+import { teachersTable } from "@workspace/db";
 import { requireAdmin, hashPassword, verifyPassword } from "../lib/auth";
 import { generateStudentId, generateAdmissionNumber, generateReceiptNumber } from "../lib/ids";
 
@@ -624,6 +633,58 @@ router.get("/admin/contact-messages", async (_req, res): Promise<void> => {
     .from(contactMessagesTable)
     .orderBy(desc(contactMessagesTable.createdAt));
   res.json(ListContactMessagesResponse.parse(messages));
+});
+
+router.get("/admin/teachers", async (req, res): Promise<void> => {
+  const parsed = ListTeachersQueryParams.safeParse(req.query);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+  const { search } = parsed.data;
+  const conditions = search
+    ? [or(ilike(teachersTable.name, `%${search}%`), ilike(teachersTable.mobile, `%${search}%`))]
+    : [];
+  const teachers = await db
+    .select()
+    .from(teachersTable)
+    .where(conditions.length ? and(...conditions) : undefined)
+    .orderBy(asc(teachersTable.createdAt));
+  res.json(ListTeachersResponse.parse(teachers));
+});
+
+router.post("/admin/teachers", async (req, res): Promise<void> => {
+  const parsed = CreateTeacherBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.message });
+    return;
+  }
+  const [teacher] = await db.insert(teachersTable).values(parsed.data).returning();
+  res.status(201).json(CreateTeacherResponse.parse(teacher));
+});
+
+router.put("/admin/teachers/:id", async (req, res): Promise<void> => {
+  const paramsParsed = UpdateTeacherParams.safeParse({ id: Number(req.params.id) });
+  const bodyParsed = UpdateTeacherBody.safeParse(req.body);
+  if (!paramsParsed.success || !bodyParsed.success) {
+    res.status(400).json({ error: "Invalid request" });
+    return;
+  }
+  const [teacher] = await db
+    .update(teachersTable)
+    .set(bodyParsed.data)
+    .where(eq(teachersTable.id, paramsParsed.data.id))
+    .returning();
+  if (!teacher) { res.status(404).json({ error: "Not found" }); return; }
+  res.json(UpdateTeacherResponse.parse(teacher));
+});
+
+router.delete("/admin/teachers/:id", async (req, res): Promise<void> => {
+  const parsed = DeleteTeacherParams.safeParse({ id: Number(req.params.id) });
+  if (!parsed.success) { res.status(400).json({ error: "Invalid id" }); return; }
+  const result = await db.delete(teachersTable).where(eq(teachersTable.id, parsed.data.id)).returning();
+  if (!result.length) { res.status(404).json({ error: "Not found" }); return; }
+  res.sendStatus(204);
 });
 
 export default router;

@@ -353,6 +353,68 @@ export interface PublicStats {
   successRate: number;
 }
 
+export type TeacherStatus = typeof TeacherStatus[keyof typeof TeacherStatus];
+
+
+export const TeacherStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Teacher {
+  id: number;
+  name: string;
+  subject: string;
+  mobile: string;
+  photoUrl?: string | null;
+  status: TeacherStatus;
+  createdAt: string;
+}
+
+export type CreateTeacherInputStatus = typeof CreateTeacherInputStatus[keyof typeof CreateTeacherInputStatus];
+
+
+export const CreateTeacherInputStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface CreateTeacherInput {
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  subject: string;
+  /**
+     * @minLength 10
+     * @maxLength 10
+     */
+  mobile: string;
+  photoUrl?: string;
+  status?: CreateTeacherInputStatus;
+}
+
+export type UpdateTeacherInputStatus = typeof UpdateTeacherInputStatus[keyof typeof UpdateTeacherInputStatus];
+
+
+export const UpdateTeacherInputStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface UpdateTeacherInput {
+  /** @minLength 1 */
+  name?: string;
+  /** @minLength 1 */
+  subject?: string;
+  /**
+     * @minLength 10
+     * @maxLength 10
+     */
+  mobile?: string;
+  photoUrl?: string;
+  status?: UpdateTeacherInputStatus;
+}
+
 export interface AdminDashboardSummary {
   totalStudents: number;
   activeStudents: number;
@@ -395,4 +457,8 @@ export const ListStudentsSort = {
   nameAsc: 'nameAsc',
   nameDesc: 'nameDesc',
 } as const;
+
+export type ListTeachersParams = {
+search?: string;
+};
 

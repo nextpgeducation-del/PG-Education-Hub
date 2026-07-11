@@ -585,6 +585,90 @@ paths:
         "404":
           description: Not found
 
+  /admin/teachers:
+    get:
+      operationId: listTeachers
+      tags: [admin]
+      summary: List all teachers (search by name or mobile)
+      parameters:
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Teacher"
+        "401":
+          description: Not logged in
+    post:
+      operationId: createTeacher
+      tags: [admin]
+      summary: Add a new teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTeacherInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teacher"
+        "401":
+          description: Not logged in
+
+  /admin/teachers/{id}:
+    put:
+      operationId: updateTeacher
+      tags: [admin]
+      summary: Update a teacher
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTeacherInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teacher"
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+    delete:
+      operationId: deleteTeacher
+      tags: [admin]
+      summary: Delete a teacher
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+        "401":
+          description: Not logged in
+        "404":
+          description: Not found
+
   /admin/terminated-students:
     get:
       operationId: listTerminatedStudents
@@ -1286,6 +1370,37 @@ components:
         expertTeachers: { type: integer }
         coursesCount: { type: integer }
         successRate: { type: integer }
+
+    Teacher:
+      type: object
+      required: [id, name, subject, mobile, status, createdAt]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        subject: { type: string }
+        mobile: { type: string }
+        photoUrl: { type: string, nullable: true }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+
+    CreateTeacherInput:
+      type: object
+      required: [name, subject, mobile]
+      properties:
+        name: { type: string, minLength: 1 }
+        subject: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        photoUrl: { type: string }
+        status: { type: string, enum: [active, inactive] }
+
+    UpdateTeacherInput:
+      type: object
+      properties:
+        name: { type: string, minLength: 1 }
+        subject: { type: string, minLength: 1 }
+        mobile: { type: string, minLength: 10, maxLength: 10 }
+        photoUrl: { type: string }
+        status: { type: string, enum: [active, inactive] }
 
     AdminDashboardSummary:
       type: object

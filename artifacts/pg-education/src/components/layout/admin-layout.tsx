@@ -9,7 +9,8 @@ import {
   MessageSquare,
   LogOut,
   Menu,
-  X
+  X,
+  GraduationCap
 } from "lucide-react";
 import { useState } from "react";
 import { useGetCurrentAdmin, useLogoutAdmin } from "@workspace/api-client-react";
@@ -47,6 +48,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
     { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/admin/students", label: "Active Students", icon: Users },
     { href: "/admin/terminated-students", label: "Terminated", icon: UsersRound },
+    { href: "/admin/teachers", label: "Teacher List", icon: GraduationCap },
     { href: "/admin/content", label: "Content Management", icon: FileText },
     { href: "/admin/messages", label: "Contact Messages", icon: MessageSquare },
   ];

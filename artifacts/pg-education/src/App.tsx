@@ -27,6 +27,7 @@ import StudentDetail from "@/pages/admin/student-detail";
 import AdminTerminatedStudents from "@/pages/admin/terminated-students";
 import AdminContent from "@/pages/admin/content";
 import AdminMessages from "@/pages/admin/messages";
+import AdminTeachers from "@/pages/admin/teachers";
 
 import { PublicLayout } from "@/components/layout/public-layout";
 
@@ -83,6 +84,7 @@ function Router() {
       <Route path="/admin/students/:id" component={StudentDetail} />
       <Route path="/admin/terminated-students" component={AdminTerminatedStudents} />
       <Route path="/admin/content" component={AdminContent} />
+      <Route path="/admin/teachers" component={AdminTeachers} />
       <Route path="/admin/messages" component={AdminMessages} />
 
       <Route component={NotFound} />
