@@ -4,25 +4,30 @@ import { db, adminsTable, pool } from "@workspace/db";
 
 async function main() {
   const username = "UltimateAdmin";
+  const password = "Ultimate@2006";
+
+  const passwordHash = await bcrypt.hash(password, 10);
+
   const [existing] = await db
     .select()
     .from(adminsTable)
     .where(eq(adminsTable.username, username));
 
   if (existing) {
-    console.log("Admin already exists, skipping seed.");
-    await pool.end();
-    return;
+    await db
+      .update(adminsTable)
+      .set({ passwordHash, mustChangePassword: false })
+      .where(eq(adminsTable.username, username));
+    console.log(`Admin "${username}" password reset successfully.`);
+  } else {
+    await db.insert(adminsTable).values({
+      username,
+      passwordHash,
+      mustChangePassword: false,
+    });
+    console.log(`Admin "${username}" created successfully.`);
   }
 
-  const passwordHash = await bcrypt.hash("Ultimate@2006", 10);
-  await db.insert(adminsTable).values({
-    username,
-    passwordHash,
-    mustChangePassword: true,
-  });
-
-  console.log("Seeded default admin:", username);
   await pool.end();
 }
 
