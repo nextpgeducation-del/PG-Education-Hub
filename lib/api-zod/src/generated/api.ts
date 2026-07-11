@@ -418,7 +418,11 @@ export const GetAdminDashboardSummaryResponse = zod.object({
   "totalFeesCollected": zod.number(),
   "pendingFees": zod.number(),
   "monthlyCollection": zod.number(),
-  "newAdmissionsThisMonth": zod.number()
+  "newAdmissionsThisMonth": zod.number(),
+  "todaysNewRegistrations": zod.number(),
+  "totalNotes": zod.number(),
+  "totalPapers": zod.number(),
+  "totalMockTests": zod.number()
 })
 
 

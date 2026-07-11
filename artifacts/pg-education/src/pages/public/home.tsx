@@ -44,13 +44,13 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
-                {statsLoading ? "..." : `${stats?.studentsEnrolled}+`}
+                {statsLoading ? "..." : (stats?.studentsEnrolled ?? 0).toLocaleString()}
               </div>
               <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Students Enrolled</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
-                {statsLoading ? "..." : `${stats?.expertTeachers}+`}
+                {statsLoading ? "..." : stats?.expertTeachers}
               </div>
               <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Expert Teachers</div>
             </div>

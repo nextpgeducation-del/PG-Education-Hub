@@ -135,10 +135,10 @@ router.get("/stats", async (_req, res): Promise<void> => {
 
   res.json(
     GetPublicStatsResponse.parse({
-      studentsEnrolled: (row?.total ?? 0) + 500,
-      expertTeachers: 24,
-      coursesCount: 12,
-      successRate: 96,
+      studentsEnrolled: row?.total ?? 0,
+      expertTeachers: 2,
+      coursesCount: 7,
+      successRate: 98,
     }),
   );
 });

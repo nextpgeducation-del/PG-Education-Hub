@@ -100,43 +100,34 @@ router.post("/admin/change-password", async (req, res): Promise<void> => {
 });
 
 router.get("/admin/dashboard-summary", async (_req, res): Promise<void> => {
-  const [totalRow] = await db.select({ total: count() }).from(studentsTable);
-  const [activeRow] = await db
-    .select({ total: count() })
-    .from(studentsTable)
-    .where(eq(studentsTable.status, "active"));
-  const [terminatedRow] = await db
-    .select({ total: count() })
-    .from(studentsTable)
-    .where(eq(studentsTable.status, "terminated"));
-
-  const startOfMonth = new Date();
-  startOfMonth.setDate(1);
-  startOfMonth.setHours(0, 0, 0, 0);
-  const [newAdmissionsRow] = await db
-    .select({ total: count() })
-    .from(studentsTable)
-    .where(gte(studentsTable.registrationDate, startOfMonth));
-
-  const [collectedRow] = await db
-    .select({ total: sum(feesTable.amountPaid) })
-    .from(feesTable);
-
-  const [pendingRow] = await db
-    .select({ total: sum(feesTable.feeAmount) })
-    .from(feesTable)
-    .where(or(eq(feesTable.status, "pending"), eq(feesTable.status, "partial")));
-
   const now = new Date();
-  const [monthlyRow] = await db
-    .select({ total: sum(feesTable.amountPaid) })
-    .from(feesTable)
-    .where(
-      and(
-        eq(feesTable.month, now.getMonth() + 1),
-        eq(feesTable.year, now.getFullYear()),
-      ),
-    );
+
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const [
+    [totalRow],
+    [activeRow],
+    [terminatedRow],
+    [newAdmissionsRow],
+    [todaysRow],
+    [collectedRow],
+    [pendingRow],
+    [monthlyRow],
+    [notesRow],
+    [papersRow],
+  ] = await Promise.all([
+    db.select({ total: count() }).from(studentsTable),
+    db.select({ total: count() }).from(studentsTable).where(eq(studentsTable.status, "active")),
+    db.select({ total: count() }).from(studentsTable).where(eq(studentsTable.status, "terminated")),
+    db.select({ total: count() }).from(studentsTable).where(gte(studentsTable.registrationDate, startOfMonth)),
+    db.select({ total: count() }).from(studentsTable).where(gte(studentsTable.registrationDate, startOfToday)),
+    db.select({ total: sum(feesTable.amountPaid) }).from(feesTable),
+    db.select({ total: sum(feesTable.feeAmount) }).from(feesTable).where(or(eq(feesTable.status, "pending"), eq(feesTable.status, "partial"))),
+    db.select({ total: sum(feesTable.amountPaid) }).from(feesTable).where(and(eq(feesTable.month, now.getMonth() + 1), eq(feesTable.year, now.getFullYear()))),
+    db.select({ total: count() }).from(notesTable),
+    db.select({ total: count() }).from(papersTable),
+  ]);
 
   res.json(
     GetAdminDashboardSummaryResponse.parse({
@@ -147,6 +138,10 @@ router.get("/admin/dashboard-summary", async (_req, res): Promise<void> => {
       pendingFees: Number(pendingRow?.total ?? 0),
       monthlyCollection: Number(monthlyRow?.total ?? 0),
       newAdmissionsThisMonth: newAdmissionsRow?.total ?? 0,
+      todaysNewRegistrations: todaysRow?.total ?? 0,
+      totalNotes: notesRow?.total ?? 0,
+      totalPapers: papersRow?.total ?? 0,
+      totalMockTests: 0,
     }),
   );
 });

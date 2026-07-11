@@ -1297,6 +1297,10 @@ components:
         - pendingFees
         - monthlyCollection
         - newAdmissionsThisMonth
+        - todaysNewRegistrations
+        - totalNotes
+        - totalPapers
+        - totalMockTests
       properties:
         totalStudents: { type: integer }
         activeStudents: { type: integer }
@@ -1305,3 +1309,7 @@ components:
         pendingFees: { type: number }
         monthlyCollection: { type: number }
         newAdmissionsThisMonth: { type: integer }
+        todaysNewRegistrations: { type: integer }
+        totalNotes: { type: integer }
+        totalPapers: { type: integer }
+        totalMockTests: { type: integer }
